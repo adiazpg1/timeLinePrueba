@@ -1,0 +1,29 @@
+
+
+<span> LEFT </span>
+<ol>
+  <li *ngFor="let item of listaNoticias">
+    {{ item.title}}
+    <button (click)="clickSelect($event, item)"> Ver noticia </button>
+  </li>
+
+</ol>
+<span> RIGHT </span>
+
+<!-- 
+<div *ngFor="let item of listaNoticias">
+  <h1>{{ item.title.substring(0,15) }} <span *ngIf="item.title.length > 15">...</span> </h1>
+
+  <button (click)="clickSelect($event, item)"> Ver noticia </button>
+</div> -->
+
+<hr>
+
+
+
+<div  *ngIf="itemSelect">
+    <h2> {{ itemSelect.title }}</h2>
+    <h3> {{ itemSelect.date }}</h3>
+    <p> {{ itemSelect.content}}</p>
+    <a href="{{itemSelect.link}}"> Ver más...</a>
+</div>
