@@ -1,14 +1,14 @@
 
 
-<span class="btnPrev" (click)="slide(false)"> LEFT </span>
+<button (click)="selectPage( $event)"  class="btnPrev" > LEFT </button>
 
-<ol>
-  <li *ngFor="let item of listaNoticias">
-    {{ item.title}}
-    <button (click)="clickSelect($event, item)"> Ver noticia </button>
+<ul>
+  <li *ngFor="let item of data; let i = index">
+   {{ i }} -  {{ item.title}}
+    <button (click)="selectItem($event, item)"> Ver noticia </button>
   </li>
-</ol>
-<span class="btnNext" (click)="slide(true)"> RIGHT </span>
+</ul>
+<button  (click)="selectPage($event)" class="btnNext"> RIGHT </button>
 
 <!-- 
 <div *ngFor="let item of listaNoticias">
