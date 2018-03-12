@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
 
     this._sharepointService.getMockData().subscribe(
       (result: Timeline[]) => {
-        console.log(result);
+       // console.log(result);
         this.data = result;
         this.totalItems = result.length;
       },

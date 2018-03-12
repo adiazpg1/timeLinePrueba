@@ -1,14 +1,14 @@
+<div *ngIf="data?.length > 0">
 
-
-<button (click)="selectPage( $event)"  class="btnPrev" > LEFT </button>
+<button (click)="selectPage( $event, false)"  [disabled]="currentPage <= 1" class="btnPrev"> LEFT </button>
 
 <ul>
-  <li *ngFor="let item of data; let i = index">
-   {{ i }} -  {{ item.title}}
+  <li *ngFor="let item of data.slice(0, 5) ; let i = index">
+    {{ i }} - {{ item.title}}
     <button (click)="selectItem($event, item)"> Ver noticia </button>
   </li>
 </ul>
-<button  (click)="selectPage($event)" class="btnNext"> RIGHT </button>
+<button (click)="selectPage($event, true)" [disabled]="currentPage == getTotalPages()" class="btnNext"> RIGHT </button>
 
 <!-- 
 <div *ngFor="let item of listaNoticias">
@@ -17,13 +17,13 @@
   <button (click)="clickSelect($event, item)"> Ver noticia </button>
 </div> -->
 
+</div>
+
 <hr>
 
-
-
-<div  *ngIf="itemSelect">
-    <h2> {{ itemSelect.title }}</h2>
-    <h3> {{ itemSelect.date }}</h3>
-    <p> {{ itemSelect.content}}</p>
-    <a href="{{itemSelect.link}}"> Ver más...</a>
+<div *ngIf="itemSelect">
+  <h2>{{ itemSelect.title }}</h2>
+  <h3>{{ itemSelect.date }}</h3>
+  <p>{{ itemSelect.content }}</p>
+  <a href="{{itemSelect.link}}"> Ver más...</a>
 </div>
