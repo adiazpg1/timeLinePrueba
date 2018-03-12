@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { SharepointService } from '../../services/sharepoint.service';
 import { Timeline } from './timeline';
+import { Observer } from 'rxJs';
 
 
 @Component({
@@ -12,32 +13,25 @@ export class TimelineComponent implements OnInit {
 
   @Input() data: Timeline[];
   @Input() totalItems: number;
+  @Input() itemPorPage = 3;
+  @Input() titleLimit = 30;
 
   itemSelect: Timeline;
   listaNoticias: Timeline[] = [];
   currentPage = 1;
-  itemPorPage = 5;
-
-
-
   constructor() {
   }
 
   ngOnInit() {
-
-    console.log(this.getData());
   }
 
   getTotalPages() {
+    console.log(Math.ceil(this.totalItems / this.itemPorPage));
     return Math.ceil(this.totalItems / this.itemPorPage);
   }
 
   isValidPageNumber(page: number, totalPages: number): boolean {
     return page > 0 && page <= totalPages;
-  }
-
-  getData() {
-    return this.data;
   }
 
   selectItem(e: Event, item: Timeline) {
@@ -46,6 +40,8 @@ export class TimelineComponent implements OnInit {
   }
 
   selectPage(e: Event, direction: boolean) {
+
+    e.preventDefault();
 
     if (this.currentPage === 1 && this.listaNoticias.length === 0) {
      this.listaNoticias = this.data;
@@ -61,14 +57,5 @@ export class TimelineComponent implements OnInit {
 
     console.log(this.currentPage);
   }
-
-  onPrev() {
-    if (this.currentPage < 1) {
-      return;
-    }
-    this.currentPage = this.currentPage--;
-    console.log(this.currentPage);
-  }
-
 
 }

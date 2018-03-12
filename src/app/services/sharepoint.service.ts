@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxJs/Rx';
-import { TimelineElement } from '../components/horizontal-timeline/timeline-element';
 
 @Injectable()
 export class SharepointService {
