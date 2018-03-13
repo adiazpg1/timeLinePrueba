@@ -7,6 +7,7 @@ export class SharepointService {
 
 
   url = '../assets/data.json';
+  configUrl = '../assets/config.json';
 
   constructor(private _http: HttpClient) { }
 
@@ -19,6 +20,10 @@ export class SharepointService {
 
   getMockData() {
     return this._http.get(this.url);
+  }
+
+  getConfigData() {
+    return this._http.get(this.configUrl);
   }
 
 

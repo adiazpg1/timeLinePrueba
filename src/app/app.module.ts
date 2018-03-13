@@ -7,13 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharepointService } from './services/sharepoint.service';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { HomeComponent } from './components/home/home.component';
+import { ConfigComponent } from './components/config/config.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TimelineComponent,
-    HomeComponent
+    HomeComponent,
+    ConfigComponent
   ],
   imports: [
     BrowserModule,
